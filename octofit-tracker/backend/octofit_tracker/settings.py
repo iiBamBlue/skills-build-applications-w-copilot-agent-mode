@@ -1,4 +1,3 @@
-```json
 # FILE: monafit_tracker/settings.py
 
 """
@@ -84,7 +83,7 @@ WSGI_APPLICATION = "monafit_tracker.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'monafit_db',
+        'NAME': 'octofit_db',  # Database name explicitly set to octofit_db
         'HOST': 'localhost',
         'PORT': 27017,
     }
