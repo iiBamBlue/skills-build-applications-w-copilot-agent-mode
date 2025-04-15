@@ -108,19 +108,23 @@ We'll be using a modern web application stack:
 ### Workshop Structure
 
 1. **Introduction**
+
    - Overview of OctoFit Tracker app concept
    - GitHub Copilot Chat models
 
 2. **Setup of Prerequisites**
+
    - Setting up GitHub Codespaces
    - Ensure GitHub Copilot and Copilot Chat extensions are up to date
 
 3. **Rapid Prototyping with GitHub Copilot agent mode**
+
    - Creating project structure
    - Generating boilerplate code
    - Implementing basic models, serializers, URLs, and views
 
 4. **Building Core Features**
+
    - Activity logging API
    - Team management
    - Leaderboard functionality

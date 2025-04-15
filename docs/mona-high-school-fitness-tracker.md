@@ -23,7 +23,7 @@ generate instructions in this order
 6. Setup the monafit-tracker/frontend directory will store the react app with no subdirectories
 7. Install react framework
 8. Install bootstrap and import it
-9. Commands to install mongodb via 'apt-get' 
+9. Commands to install mongodb via 'apt-get'
 10. Commands start mongodb with the 'sudo service mongodb start' and 'sudo service mongodb status'
 
 The directory tree for the monafit Tracker App
@@ -116,7 +116,7 @@ Type the following prompt in GitHub Copilot Chat:
 In our next steps lets think step by step and setup the following in this order
 
 1. Initialize the mongo monafit_db database and create a correct table structure for users, teams, activities, leaderboard, and workouts collections
-2. Make sure there is a unique id for primary key for the user collection 
+2. Make sure there is a unique id for primary key for the user collection
    ex. db.users.createIndex({ "email": 1 }, { unique: true })
 3. settings.py in our django project for mongodb monafit_db database including localhost and the port
 4. settings.py in our django project setup for all installed apps. ex djongo, monafit_tracker, rest_framework
@@ -576,12 +576,12 @@ becomes
 
 HTTP 200 OK Allow: GET, HEAD, OPTIONS Content-Type: application/json Vary: Accept
 
-{ 
+{
     "users": "http://<codespace-name>-8000.app.github.dev/api/users/?format=api",
     "teams": "http://<codespace-name>-8000.app.github.dev/api/teams/?format=api",
     "activities": "http://<codespace-name>-8000.app.github.dev/api/activities/?format=api",
     "leaderboard": "http://<codespace-name>-8000.app.github.dev/api/leaderboard/?format=api",
-    "workouts": "http://<codespace-name>-8000.app.github.dev/api/workouts/?format=api" 
+    "workouts": "http://<codespace-name>-8000.app.github.dev/api/workouts/?format=api"
 }
 ```
 
@@ -675,17 +675,10 @@ npm install react-router-dom --prefix monafit-tracker/frontend
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -716,14 +709,14 @@ Basic username password authentication is fine
 ### App.js
 
 ```javascript
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Activities from './components/Activities';
-import Leaderboard from './components/Leaderboard';
-import Teams from './components/Teams';
-import Users from './components/Users';
-import Workouts from './components/Workouts';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Activities from "./components/Activities";
+import Leaderboard from "./components/Leaderboard";
+import Teams from "./components/Teams";
+import Users from "./components/Users";
+import Workouts from "./components/Workouts";
+import "./App.css";
 
 function App() {
   return (
@@ -731,26 +724,45 @@ function App() {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">OctoFit Tracker</Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <Link className="navbar-brand" to="/">
+              OctoFit Tracker
+            </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/activities">Activities</Link>
+                  <Link className="nav-link" to="/activities">
+                    Activities
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/leaderboard">Leaderboard</Link>
+                  <Link className="nav-link" to="/leaderboard">
+                    Leaderboard
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/teams">Teams</Link>
+                  <Link className="nav-link" to="/teams">
+                    Teams
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/users">Users</Link>
+                  <Link className="nav-link" to="/users">
+                    Users
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/workouts">Workouts</Link>
+                  <Link className="nav-link" to="/workouts">
+                    Workouts
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -781,13 +793,13 @@ The error indicates that the ReactDOM.render function is not available in the ve
 To fix this issue, update your src/index.js file to use the new createRoot API provided by React 18. Here's the updated code:
 
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom/client'; // Use the new root API
-import './index.css';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client"; // Use the new root API
+import "./index.css";
+import App from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root')); // Create a root
+const root = ReactDOM.createRoot(document.getElementById("root")); // Create a root
 root.render(
   <React.StrictMode>
     <App />
@@ -800,16 +812,18 @@ root.render(
 Always use the Codespace URL for the API endpoint
 
 ```javascript
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    fetch('https://congenial-robot-pwrx4jxpp9c6vjv-8000.app.github.dev/api/leaderboard/')
-      .then(response => response.json())
-      .then(data => setLeaderboard(data))
-      .catch(error => console.error('Error fetching leaderboard:', error));
+    fetch(
+      "https://congenial-robot-pwrx4jxpp9c6vjv-8000.app.github.dev/api/leaderboard/"
+    )
+      .then((response) => response.json())
+      .then((data) => setLeaderboard(data))
+      .catch((error) => console.error("Error fetching leaderboard:", error));
   }, []);
 
   return (
@@ -823,7 +837,7 @@ function Leaderboard() {
           </tr>
         </thead>
         <tbody>
-          {leaderboard.map(entry => (
+          {leaderboard.map((entry) => (
             <tr key={entry._id}>
               <td>{entry.user.username}</td>
               <td>{entry.score}</td>
@@ -843,7 +857,7 @@ export default Leaderboard;
 ```css
 /* General styles */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f0f8ff; /* Light blue background */
   margin: 0;
   padding: 0;
@@ -903,7 +917,8 @@ table {
   overflow: hidden;
 }
 
-table th, table td {
+table th,
+table td {
   border: 1px solid #ddd;
   padding: 1rem;
   text-align: left;
