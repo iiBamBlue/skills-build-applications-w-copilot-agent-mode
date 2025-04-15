@@ -1,38 +1,43 @@
-# Test data for populating the octofit_db database
+from datetime import timedelta
+from bson import ObjectId
+from .models import User, Team, Activity, Leaderboard, Workout
 
-test_users = [
-    {"username": "thundergod", "email": "thundergod@mhigh.edu", "password": "thundergodpassword"},
-    {"username": "metalgeek", "email": "metalgeek@mhigh.edu", "password": "metalgeekpassword"},
-    {"username": "zerocool", "email": "zerocool@mhigh.edu", "password": "zerocoolpassword"},
-    {"username": "crashoverride", "email": "crashoverride@mhigh.edu", "password": "crashoverridepassword"},
-    {"username": "sleeptoken", "email": "sleeptoken@mhigh.edu", "password": "sleeptokenpassword"},
-]
+def get_test_data():
+    users = [
+        User(_id=ObjectId(), username='thundergod', email='thundergod@mhigh.edu', password='thundergodpassword'),
+        User(_id=ObjectId(), username='metalgeek', email='metalgeek@mhigh.edu', password='metalgeekpassword'),
+        User(_id=ObjectId(), username='zerocool', email='zerocool@mhigh.edu', password='zerocoolpassword'),
+        User(_id=ObjectId(), username='crashoverride', email='crashoverride@hmhigh.edu', password='crashoverridepassword'),
+        User(_id=ObjectId(), username='sleeptoken', email='sleeptoken@mhigh.edu', password='sleeptokenpassword'),
+    ]
 
-test_teams = [
-    {"name": "Blue Team"},
-    {"name": "Gold Team"},
-]
+    teams = [
+        Team(_id=ObjectId(), name='Blue Team'),
+        Team(_id=ObjectId(), name='Gold Team'),
+    ]
 
-test_activities = [
-    {"username": "thundergod", "activity_type": "Cycling", "duration": "01:00:00"},
-    {"username": "metalgeek", "activity_type": "Crossfit", "duration": "02:00:00"},
-    {"username": "zerocool", "activity_type": "Running", "duration": "01:30:00"},
-    {"username": "crashoverride", "activity_type": "Strength", "duration": "00:30:00"},
-    {"username": "sleeptoken", "activity_type": "Swimming", "duration": "01:15:00"},
-]
+    activities = [
+        Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=timedelta(hours=1)),
+        Activity(_id=ObjectId(), user=users[1], activity_type='Crossfit', duration=timedelta(hours=2)),
+        Activity(_id=ObjectId(), user=users[2], activity_type='Running', duration=timedelta(hours=1, minutes=30)),
+        Activity(_id=ObjectId(), user=users[3], activity_type='Strength', duration=timedelta(minutes=30)),
+        Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=timedelta(hours=1, minutes=15)),
+    ]
 
-test_leaderboard = [
-    {"username": "thundergod", "score": 100},
-    {"username": "metalgeek", "score": 90},
-    {"username": "zerocool", "score": 95},
-    {"username": "crashoverride", "score": 85},
-    {"username": "sleeptoken", "score": 80},
-]
+    leaderboard = [
+        Leaderboard(_id=ObjectId(), user=users[0], score=100),
+        Leaderboard(_id=ObjectId(), user=users[1], score=90),
+        Leaderboard(_id=ObjectId(), user=users[2], score=95),
+        Leaderboard(_id=ObjectId(), user=users[3], score=85),
+        Leaderboard(_id=ObjectId(), user=users[4], score=80),
+    ]
 
-test_workouts = [
-    {"name": "Cycling Training", "description": "Training for a road cycling event"},
-    {"name": "Crossfit", "description": "Training for a crossfit competition"},
-    {"name": "Running Training", "description": "Training for a marathon"},
-    {"name": "Strength Training", "description": "Training for strength"},
-    {"name": "Swimming Training", "description": "Training for a swimming competition"},
-]
+    workouts = [
+        Workout(_id=ObjectId(), name='Cycling Training', description='Training for a road cycling event'),
+        Workout(_id=ObjectId(), name='Crossfit', description='Training for a crossfit competition'),
+        Workout(_id=ObjectId(), name='Running Training', description='Training for a marathon'),
+        Workout(_id=ObjectId(), name='Strength Training', description='Training for strength'),
+        Workout(_id=ObjectId(), name='Swimming Training', description='Training for a swimming competition'),
+    ]
+
+    return users, teams, activities, leaderboard, workouts
